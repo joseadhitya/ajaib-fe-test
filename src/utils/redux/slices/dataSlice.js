@@ -25,8 +25,21 @@ export const dataSlice = createSlice({
 
 export const { setUsers, flushData } = dataSlice.actions;
 
-export const getUsers = (url, callbackSuccess, callbackError) => {
+export const fetchUsers = (url, params, callbackSuccess, callbackError) => {
     return (dispatch) => {
+        // If has parameters, add parameters to url
+        if (!_.isEmpty(params)) {
+            // Add '?' to URL -> https://randomuser.me/api?
+            url = url + '?';
+            for (const prop in params) {
+                // Foreach params, add params to URL -> https://randomuser.me/api?param1=value1&
+                url = url + prop + '=' + params[prop] + '&';
+            };
+            // Remove trailing '&' in URL -> https://randomuser.me/api?param1=value1
+            url = _.trimEnd(url, '&');
+        };
+
+        // Perform fetching
         axios.get(url)
             .then((response) => {
                 dispatch(setUsers(response.data));
