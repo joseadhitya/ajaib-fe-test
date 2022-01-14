@@ -5,13 +5,16 @@ import { connect } from 'react-redux';
 import config from '../../config';
 import { fetchUsers } from '../../utils/redux/slices';
 
-import { Breadcrumb, Search, GenderFilter, ResetButton, UserTable } from './components';
+import { Breadcrumb, Search, GenderFilter, ResetButton, UserTable, Pagination } from './components';
 
 class Example extends React.Component {
 
   constructor(props) {
     super(props);
     this.state = {
+      page: 1,
+      pageSize: 10,
+      results: 10,
       keyword: null,
       gender: null,
     };
@@ -63,6 +66,12 @@ class Example extends React.Component {
         <hr />
 
         <UserTable users={this.props.users} />
+
+        <div className='row justify-content-end'>
+          <div className='col-auto my-1'>
+            <Pagination info={this.props.info} onChange={this.handleFilterSelected} />
+          </div>
+        </div>
       </div>
     );
   };

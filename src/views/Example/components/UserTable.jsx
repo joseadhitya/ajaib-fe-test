@@ -1,3 +1,4 @@
+import _ from 'lodash';
 import React from 'react';
 
 class UserTable extends React.Component {
@@ -18,11 +19,11 @@ class UserTable extends React.Component {
         <tbody>
           {this.props.users.map((o, i) => (
             <tr key={i}>
-              <td>Username</td>
-              <td>Name</td>
-              <td>Email</td>
-              <td>Gender</td>
-              <td>Registered Date</td>
+              <td>{_.get(o, 'login.username')}</td>
+              <td>{_.get(o, 'name.first') + ' ' + _.get(o, 'name.last')}</td>
+              <td>{_.get(o, 'email')}</td>
+              <td>{_.get(o, 'gender')}</td>
+              <td>{_.get(o, 'registered.date')}</td>
             </tr>
           ))}
         </tbody>
