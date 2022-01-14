@@ -7,17 +7,21 @@ import { fetchUsers } from '../../utils/redux/slices';
 
 import { Breadcrumb, Search, GenderFilter, ResetButton, UserTable, Pagination } from './components';
 
+const INITIAL_STATE = {
+  page: 1,
+  pageSize: 10,
+  results: 10,
+  keyword: null,
+  gender: null,
+  sortBy: null,
+  sortOrder: null,
+};
+
 class Example extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = {
-      page: 1,
-      pageSize: 10,
-      results: 10,
-      keyword: null,
-      gender: null,
-    };
+    this.state = INITIAL_STATE;
   };
 
   componentDidMount = () => {
@@ -34,14 +38,14 @@ class Example extends React.Component {
     const onStateChanged = () => {
       this.fetchUsers();
     };
-    this.setState({ keyword: null, gender: null }, onStateChanged);
+    this.setState(INITIAL_STATE, onStateChanged);
   };
 
-  handleFilterSelected = (valueKey, value) => {
+  handleFilterSelected = (values) => {
     const onStateChanged = () => {
       this.fetchUsers();
     };
-    this.setState({ [valueKey]: value }, onStateChanged);
+    this.setState(values, onStateChanged);
   };
 
   render() {
@@ -65,7 +69,7 @@ class Example extends React.Component {
 
         <hr />
 
-        <UserTable users={this.props.users} />
+        <UserTable users={this.props.users} sortBy={this.state.sortBy} sortOrder={this.state.sortOrder} onChange={this.handleFilterSelected} />
 
         <div className='row justify-content-end'>
           <div className='col-auto my-1'>

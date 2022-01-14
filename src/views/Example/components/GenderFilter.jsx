@@ -12,7 +12,7 @@ class GenderFilter extends React.Component {
   handleChange = (event) => {
     let value = event.target.value;
     if (value === 'null') value = null;
-    _.invoke(this.props, 'onChange', this.props.valueKey, value);
+    _.invoke(this.props, 'onChange', { [this.props.valueKey]: value });
   };
 
   render() {

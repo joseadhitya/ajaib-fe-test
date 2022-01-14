@@ -12,8 +12,13 @@ export const dataSlice = createSlice({
     initialState: initialState,
     reducers: {
         setUsers: (state, action) => {
-            let users = action.payload.results.map((o) => o); // use Adapter
-            let info = action.payload.info; // use Adapter
+            let users = action.payload.results.map((o) => {
+                _.set(o, 'name.full', _.get(o, 'name.first') + ' ' + _.get(o, 'name.last')); // Set full name here, better to set once rather than generating each time needed.
+                return o;
+            });
+            let info = action.payload.info;
+            _.set(info, 'pageSize', 2);      // Add max number of pages, not available from randomuser.me. I assume pageSize is max number of page.
+
             state.users = users;
             state.info = info;
         },

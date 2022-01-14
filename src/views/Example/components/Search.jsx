@@ -12,13 +12,13 @@ class Search extends React.Component {
   handleChange = (event) => {
     let value = event.target.value;
     if (value === '') value = null;
-    _.invoke(this.props, 'onChange', this.props.valueKey, value);
+    _.invoke(this.props, 'onChange', { [this.props.valueKey]: value });
   };
 
   handleClick = (event) => {
     let value = _.clone(this.props.value);
     if (value === '') value = null;
-    _.invoke(this.props, 'onChange', this.props.valueKey, value);
+    _.invoke(this.props, 'onChange', { [this.props.valueKey]: value });
   };
 
   render() {
