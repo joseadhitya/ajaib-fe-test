@@ -12,6 +12,8 @@ const TABLE_COLUMNS = [
 class UserTable extends React.Component {
 
   getSortIcon = (category, sortBy, sortOrder) => {
+    // Using @fortawesome/fontawesome free. Used these icons instead,
+    // because the icon that can be partially colored is only available for the pro version.
     let icon;
     if (category !== sortBy) return 'fa-sort';
 

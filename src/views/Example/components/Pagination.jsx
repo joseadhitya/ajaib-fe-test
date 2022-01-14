@@ -27,7 +27,8 @@ class Pagination extends React.Component {
   };
 
   handleSelectPage = (newPage) => {
-    if (_.head(this.state.pages) <= newPage && newPage <= _.tail(this.state.pages)) {
+    let current = _.get(this.props.info, 'page');
+    if (_.head(this.state.pages) <= newPage && newPage <= _.tail(this.state.pages) && newPage !== current) {
       _.invoke(this.props, 'onChange', { page: newPage });
     };
   };

@@ -34,6 +34,12 @@ class Example extends React.Component {
     this.props.dispatch(fetchUsers(config.BE_USER_URL, params));
   };
 
+  fetchUsersDebounced = _.debounce(() => {
+    let params = _.clone(this.state);
+    params = _.omitBy(params, _.isNil);
+    this.props.dispatch(fetchUsers(config.BE_USER_URL, params));
+  }, config.HTTP_DEBOUNCE_MS);
+
   resetFilter = () => {
     const onStateChanged = () => {
       this.fetchUsers();
@@ -48,6 +54,13 @@ class Example extends React.Component {
     this.setState(values, onStateChanged);
   };
 
+  handleFilterSelectedDebounced = (values) => {
+    const onStateChanged = () => {
+      this.fetchUsersDebounced();
+    };
+    this.setState(values, onStateChanged);
+  };
+
   render() {
     return (
       <div className='container py-4'>
@@ -57,7 +70,7 @@ class Example extends React.Component {
 
         <div className='row align-items-end mb-3'>
           <div className='col-auto my-1'>
-            <Search valueKey='keyword' value={this.state.keyword} onChange={this.handleFilterSelected} />
+            <Search valueKey='keyword' value={this.state.keyword} onChange={this.handleFilterSelectedDebounced} />
           </div>
           <div className='col-auto my-1'>
             <GenderFilter valueKey='gender' value={this.state.gender} onChange={this.handleFilterSelected} />
