@@ -2,6 +2,8 @@
 
 This project is created to showcase my abilities for the Senior Software Engineer position in Ajaib. This project is built in accordance to the test question provided by the company, and this project should follow the rules specified on the question to the best of my capacity.
 
+For the mini-questionnaire part of the test, please refer to the `mini-questionnaire.md` file on this project's root directory.
+
 ## Getting Started
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
