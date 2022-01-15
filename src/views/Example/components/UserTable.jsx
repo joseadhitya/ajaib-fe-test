@@ -69,7 +69,7 @@ class UserTable extends React.Component {
 
   render() {
     return (
-      <table className='table'>
+      <table className='table' data-testid='table-user'>
         <thead>
           <tr>
             {TABLE_COLUMNS.map((o, i) => (

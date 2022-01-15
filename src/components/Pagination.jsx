@@ -43,47 +43,47 @@ class Pagination extends React.Component {
   handleNextPage = () => {
     let current = _.get(this.props.info, 'page');
     if (current && current + 1 <= _.tail(this.state.pages)) {
-      _.invoke(this.props, 'onChange', { page: current + 1 });
+      _.invoke(this.props, 'onChange', { page: current - 1 });
     };
   };
 
   render() {
     return (
-      <nav aria-label='Page navigation'>
+      <nav aria-label='Page navigation' data-testid='pagination'>
         <ul className='pagination'>
           {_.get(this.props.info, 'page') === _.head(this.state.pages)
-            ? <li className='page-item disabled'>
-              <span className='page-link' onClick={this.handlePrevPage}>
+            ? <li className='page-item disabled' data-testid='pagination-item' onClick={this.handlePrevPage}>
+              <span className='page-link'>
                 <i className='fas fa-angle-left' />
               </span>
             </li>
-            : <li className='page-item'>
-              <span className='page-link' onClick={this.handlePrevPage}>
+            : <li className='page-item' data-testid='pagination-item' onClick={this.handlePrevPage}>
+              <span className='page-link'>
                 <i className='fas fa-angle-left' />
               </span>
             </li>
           }
           {this.state.pages.map((o, i) => (
             _.get(this.props.info, 'page') === o
-              ? <li key={i} className='page-item active'>
-                <span className='page-link' onClick={() => this.handleSelectPage(o)}>
+              ? <li key={i} className='page-item active' data-testid='pagination-item' onClick={() => this.handleSelectPage(o)}>
+                <span className='page-link'>
                   {o}
                 </span>
               </li>
-              : <li key={i} className='page-item'>
-                <span className='page-link' onClick={() => this.handleSelectPage(o)}>
+              : <li key={i} className='page-item' data-testid='pagination-item' onClick={() => this.handleSelectPage(o)}>
+                <span className='page-link'>
                   {o}
                 </span>
               </li>
           ))}
           {_.get(this.props.info, 'page') === _.tail(this.state.pages)
-            ? <li className='page-item disabled'>
-              <span className='page-link' onClick={this.handleNextPage}>
+            ? <li className='page-item disabled' data-testid='pagination-item' onClick={this.handleNextPage}>
+              <span className='page-link'>
                 <i className='fas fa-angle-right' />
               </span>
             </li>
-            : <li className='page-item'>
-              <span className='page-link' onClick={this.handleNextPage}>
+            : <li className='page-item' data-testid='pagination-item' onClick={this.handleNextPage}>
+              <span className='page-link'>
                 <i className='fas fa-angle-right' />
               </span>
             </li>

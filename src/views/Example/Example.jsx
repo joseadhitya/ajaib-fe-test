@@ -68,7 +68,7 @@ class Example extends React.Component {
 
   render() {
     return (
-      <div className='container py-4'>
+      <div className='container py-4' data-testid='container-example'>
         <Breadcrumb location={this.props.location} routes={this.props.routes} />
 
         <h2 className='mb-3'>Example With Search and Filter</h2>

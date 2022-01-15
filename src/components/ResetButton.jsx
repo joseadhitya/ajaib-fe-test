@@ -4,7 +4,7 @@ class ResetButton extends React.Component {
 
   render() {
     return (
-      <button type='button' className='btn btn-light border' onClick={this.props.onClick}>Reset Filter</button>
+      <button type='button' className='btn btn-light border' onClick={this.props.onClick} data-testid='button-reset'>Reset Filter</button>
     );
   };
 };

@@ -8,7 +8,7 @@ class App extends React.Component {
 
   render() {
     return (
-      <div className='container py-4'>
+      <div className='container py-4' data-testid='container-home'>
         <Breadcrumb location={this.props.location} routes={this.props.routes} />
 
         <header className='App-header'>

@@ -47,12 +47,12 @@ class Breadcrumb extends React.Component {
 
   render() {
     return (
-      <nav aria-label='breadcrumb'>
+      <nav aria-label='breadcrumb' data-testid='breadcrumb'>
         <ol className='breadcrumb'>
           {this.state.crumbs.map((o, i) => (
             o.active === true
-              ? <Link key={i} className='breadcrumb-item active' to={o.path}>{o.name}</Link>
-              : <Link key={i} className='breadcrumb-item' to={o.path}>{o.name}</Link>
+              ? <Link key={i} className='breadcrumb-item active' to={o.path} data-testid='breadcrumb-item' >{o.name}</Link>
+              : <Link key={i} className='breadcrumb-item' to={o.path} data-testid='breadcrumb-item' >{o.name}</Link>
           ))}
         </ol>
       </nav>
