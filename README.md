@@ -1,70 +1,83 @@
-# Getting Started with Create React App
+# Ajaib Frontend Test
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project is created to showcase my abilities for the Senior Software Engineer position in Ajaib. This project is built in accordance to the test question provided by the company, and this project should follow the rules specified on the question to the best of my capacity.
 
-## Available Scripts
+## Getting Started
 
-In the project directory, you can run:
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
-### `yarn start`
+### Prerequisites
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+This project requires the following items to be pre-installed in your machine:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- [`node.js`](https://nodejs.org/en/download/)
 
-### `yarn test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Installing
 
-### `yarn build`
+After cloning a local copy of this project from Github, please run the following commands:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```
+npm install
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+This command will run installation for all dependencies listed on `package.json`.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+After installation is complete, you are now free to make any changes to the code.
 
-### `yarn eject`
+To view the project, you may run the project locally on your machine using:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+```
+npm start
+```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Should you wish to build & deploy the project, please refer to the Deployment section of this document.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Running the tests
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+There are several test cases available for this project (mostly unit testing). To run the test, you may simply run the following command:
 
-## Learn More
+```
+npm run test
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Each test are designed to test the appropriate component *only*, and thus should not test logic being handled by the child nor parent components. Should you wish to add more testcases, please ensure the aforementioned statement still holds true.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Deployment
 
-### Code Splitting
+Assuming the project is completed without any major bugs or warnings, you may opt to deploy the project on a live system.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+First, you need to create a static build using:
 
-### Analyzing the Bundle Size
+```
+npm run build
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+This will create a new directory called `build` within the root of the folder. This folder contains the built project as static files.
 
-### Making a Progressive Web App
+Now you may serve the package using any server you prefer, such as:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+- Locally using serve
 
-### Advanced Configuration
+```
+npm install serve -g
+serve ./build
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+- Or using any reverse proxy, all you have to do is point the location to the `build` folder. Please check with the appropriate guide for more information.
 
-### Deployment
+## Built With
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+* [React](https://reactjs.org/) using [Create React App](https://create-react-app.dev/) - The web framework used
+* [Redux](https://redux.js.org/) - State Management
+* [React Router](https://reactrouter.com/) - Page routing
+* [Bootstrap](https://getbootstrap.com/) & [Fontawesome](https://fontawesome.com/) - CSS Styling
+* [Randomuser.me](https://randomuser.me/) - Data faker
 
-### `yarn build` fails to minify
+## Authors
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+* **Jose Gunawarman** - [joseadhitya](https://github.com/joseadhitya)
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
