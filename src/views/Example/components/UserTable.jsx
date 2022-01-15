@@ -74,7 +74,7 @@ class UserTable extends React.Component {
         <thead>
           <tr>
             {TABLE_COLUMNS.map((o, i) => (
-              <th key={i} scope='col' className='position-relative' onClick={() => this.toggleSort(o.sort)} data-testid='table-user-header'>
+              <th key={i} scope='col' className='position-relative' style={{ cursor: 'pointer' }} onClick={() => this.toggleSort(o.sort)} data-testid='table-user-header'>
                 <span>{o.header}</span>
                 <i className={`fas ${this.getSortIcon(o.sort, this.props.sortBy, this.props.sortOrder)} position-absolute py-1`} style={{ right: 0 }} />
               </th>

@@ -52,12 +52,12 @@ class Pagination extends React.Component {
       <nav aria-label='Page navigation' data-testid='pagination'>
         <ul className='pagination'>
           {_.get(this.props.info, 'page') === _.head(this.state.pages)
-            ? <li className='page-item disabled' data-testid='pagination-item' onClick={this.handlePrevPage}>
+            ? <li className='page-item disabled' style={{ cursor: 'pointer' }} data-testid='pagination-item' onClick={this.handlePrevPage}>
               <span className='page-link'>
                 <i className='fas fa-angle-left' />
               </span>
             </li>
-            : <li className='page-item' data-testid='pagination-item' onClick={this.handlePrevPage}>
+            : <li className='page-item' style={{ cursor: 'pointer' }} data-testid='pagination-item' onClick={this.handlePrevPage}>
               <span className='page-link'>
                 <i className='fas fa-angle-left' />
               </span>
@@ -65,24 +65,24 @@ class Pagination extends React.Component {
           }
           {this.state.pages.map((o, i) => (
             _.get(this.props.info, 'page') === o
-              ? <li key={i} className='page-item active' data-testid='pagination-item' onClick={() => this.handleSelectPage(o)}>
+              ? <li key={i} className='page-item active' style={{ cursor: 'pointer' }} data-testid='pagination-item' onClick={() => this.handleSelectPage(o)}>
                 <span className='page-link'>
                   {o}
                 </span>
               </li>
-              : <li key={i} className='page-item' data-testid='pagination-item' onClick={() => this.handleSelectPage(o)}>
+              : <li key={i} className='page-item' style={{ cursor: 'pointer' }} data-testid='pagination-item' onClick={() => this.handleSelectPage(o)}>
                 <span className='page-link'>
                   {o}
                 </span>
               </li>
           ))}
           {_.get(this.props.info, 'page') === _.tail(this.state.pages)
-            ? <li className='page-item disabled' data-testid='pagination-item' onClick={this.handleNextPage}>
+            ? <li className='page-item disabled' style={{ cursor: 'pointer' }} data-testid='pagination-item' onClick={this.handleNextPage}>
               <span className='page-link'>
                 <i className='fas fa-angle-right' />
               </span>
             </li>
-            : <li className='page-item' data-testid='pagination-item' onClick={this.handleNextPage}>
+            : <li className='page-item' style={{ cursor: 'pointer' }} data-testid='pagination-item' onClick={this.handleNextPage}>
               <span className='page-link'>
                 <i className='fas fa-angle-right' />
               </span>
