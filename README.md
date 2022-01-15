@@ -4,6 +4,8 @@ This project is created to showcase my abilities for the Senior Software Enginee
 
 For the mini-questionnaire part of the test, please refer to the `mini-questionnaire.md` file on this project's root directory.
 
+The demo of the project is available [here](https://ajaib-fe-test.vercel.app/example).
+
 ## Getting Started
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
