@@ -16,8 +16,6 @@ const TestElement = props => {
   );
 };
 
-// Test render all elements correctly
-
 test('does not crash', () => {
   render(<TestElement />);
   const homeElement = screen.getByTestId('container-example');
@@ -67,5 +65,3 @@ test('renders pagination', () => {
     expect(o).toBeInTheDocument();
   });
 });
-
-// Test fetches data correctly

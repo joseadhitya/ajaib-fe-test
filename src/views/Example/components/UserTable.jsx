@@ -1,5 +1,6 @@
 import _ from 'lodash';
 import React from 'react';
+import moment from 'moment';
 
 const TABLE_COLUMNS = [
   { header: 'Username', body: 'login.username', sort: 'username' },
@@ -73,7 +74,7 @@ class UserTable extends React.Component {
         <thead>
           <tr>
             {TABLE_COLUMNS.map((o, i) => (
-              <th key={i} scope='col' className='position-relative' onClick={() => this.toggleSort(o.sort)}>
+              <th key={i} scope='col' className='position-relative' onClick={() => this.toggleSort(o.sort)} data-testid='table-user-header'>
                 <span>{o.header}</span>
                 <i className={`fas ${this.getSortIcon(o.sort, this.props.sortBy, this.props.sortOrder)} position-absolute py-1`} style={{ right: 0 }} />
               </th>
@@ -84,9 +85,17 @@ class UserTable extends React.Component {
         <tbody>
           {this.props.users.map((o, i) => (
             <tr key={i}>
-              {TABLE_COLUMNS.map((p, j) => (
-                <td key={j}>{_.get(o, p.body)}</td>
-              ))}
+              {TABLE_COLUMNS.map((p, j) => {
+                switch (true) {
+                  // If moment instance, use this format
+                  case (moment.isMoment(_.get(o, p.body))):
+                    return <td key={j} data-testid='table-user-data'>{_.invoke(o, p.body + '.format', 'DD-MM-YYYY hh:mm')}</td>;
+                  // If string, display as it is
+                  case (_.isString(_.get(o, p.body))):
+                  default:
+                    return <td key={j} data-testid='table-user-data'>{_.get(o, p.body)}</td>;
+                };
+              })}
             </tr>
           ))}
         </tbody>
