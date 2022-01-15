@@ -40,7 +40,7 @@ export const fetchUsers = (url, params, callbackSuccess, callbackError) => {
         axios.get(url, { params: params })
             .then((response) => {
                 dispatch(setUsers(response.data));
-                _.invoke(callbackSuccess);
+                if (callbackSuccess) callbackSuccess();
             })
             .catch(callbackError);
     };

@@ -1,0 +1,26 @@
+.fullscreen-container {
+    position: absolute;
+    inset: 0px;
+    z-index: 10;
+    background-color: rgba(0,0,0,0.5);
+}
+
+.fullscreen-container .spinner-container {
+    position: relative;
+    max-width: 80px;
+    margin: 40vh auto 0;
+    text-align: center;
+}
+
+.fullscreen-container .spinner-container .spinner {
+    animation: Spinner-spin infinite 1s linear;
+}
+
+@keyframes Spinner-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

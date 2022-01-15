@@ -43,7 +43,7 @@ class Pagination extends React.Component {
   handleNextPage = () => {
     let current = _.get(this.props.info, 'page');
     if (current && current + 1 <= _.tail(this.state.pages)) {
-      _.invoke(this.props, 'onChange', { page: current - 1 });
+      _.invoke(this.props, 'onChange', { page: current + 1 });
     };
   };
 

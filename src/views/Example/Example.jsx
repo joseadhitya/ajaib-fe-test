@@ -11,8 +11,10 @@ import { Breadcrumb, Search, GenderFilter, ResetButton, Pagination } from '../..
 
 // Page-specific components
 import { UserTable } from './components';
+import './Example.css';
 
 const INITIAL_STATE = {
+  isLoaded: false,
   page: 1,
   pageSize: 10,
   results: 10,
@@ -36,13 +38,23 @@ class Example extends React.Component {
   fetchUsers = () => {
     let params = _.clone(this.state);
     params = _.omitBy(params, _.isNil);
-    this.props.dispatch(fetchUsers(config.BE_USER_URL, params));
+
+    const onSuccess = () => {
+      this.setState({ isLoaded: true });
+    };
+
+    this.props.dispatch(fetchUsers(config.BE_USER_URL, params, onSuccess));
   };
 
   fetchUsersDebounced = _.debounce(() => {
     let params = _.clone(this.state);
     params = _.omitBy(params, _.isNil);
-    this.props.dispatch(fetchUsers(config.BE_USER_URL, params));
+
+    const onSuccess = () => {
+      this.setState({ isLoaded: true });
+    };
+
+    this.props.dispatch(fetchUsers(config.BE_USER_URL, params, onSuccess));
   }, config.HTTP_DEBOUNCE_MS);
 
   resetFilter = () => {
@@ -69,6 +81,14 @@ class Example extends React.Component {
   render() {
     return (
       <div className='container py-4' data-testid='container-example'>
+        {!this.state.isLoaded && (
+          <div className='fullscreen-container'>l
+            <div className='spinner-container'>
+              <i className='spinner fas fa-spinner fa-3x' />
+            </div>
+          </div>
+        )}
+
         <Breadcrumb location={this.props.location} routes={this.props.routes} />
 
         <h2 className='mb-3'>Example With Search and Filter</h2>
