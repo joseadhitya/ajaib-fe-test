@@ -65,12 +65,12 @@ class Pagination extends React.Component {
           }
           {this.state.pages.map((o, i) => (
             _.get(this.props.info, 'page') === o
-              ? <li className='page-item active'>
+              ? <li key={i} className='page-item active'>
                 <span className='page-link' onClick={() => this.handleSelectPage(o)}>
                   {o}
                 </span>
               </li>
-              : <li className='page-item'>
+              : <li key={i} className='page-item'>
                 <span className='page-link' onClick={() => this.handleSelectPage(o)}>
                   {o}
                 </span>

@@ -18,7 +18,7 @@ class GenderFilter extends React.Component {
   render() {
     return (
       <>
-        <label for='input-gender-filter' className='fw-bold'>Gender</label>
+        <label htmlFor='input-gender-filter' className='fw-bold'>Gender</label>
         <div className='input-group' style={{ minWidth: '200px' }}>
           <select id='input-gender-filter' className='form-select' value={this.getValue()} onChange={this.handleChange}>
             <option value='null'>All</option>

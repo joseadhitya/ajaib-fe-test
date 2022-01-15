@@ -24,7 +24,7 @@ class Search extends React.Component {
   render() {
     return (
       <>
-        <label for='input-search' className='fw-bold'>Search</label>
+        <label htmlFor='input-search' className='fw-bold'>Search</label>
         <div className='input-group' style={{ minWidth: '200px' }}>
           <input type='text' id='input-search' className='form-control' placeholder='Search...' value={this.getValue()} onChange={this.handleChange} />
           <button type='button' className='btn btn-primary' onChange={this.handleClick}>

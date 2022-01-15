@@ -1,11 +1,16 @@
 import _ from 'lodash';
 import React from 'react';
 import { connect } from 'react-redux';
+import { useLocation } from 'react-router-dom';
 
 import config from '../../config';
 import { fetchUsers } from '../../utils/redux/slices';
 
-import { Breadcrumb, Search, GenderFilter, ResetButton, UserTable, Pagination } from './components';
+// Reusable components
+import { Breadcrumb, Search, GenderFilter, ResetButton, Pagination } from '../../components';
+
+// Page-specific components
+import { UserTable } from './components';
 
 const INITIAL_STATE = {
   page: 1,
@@ -64,7 +69,7 @@ class Example extends React.Component {
   render() {
     return (
       <div className='container py-4'>
-        <Breadcrumb />
+        <Breadcrumb location={this.props.location} routes={this.props.routes} />
 
         <h2 className='mb-3'>Example With Search and Filter</h2>
 
@@ -101,4 +106,10 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps)(Example);
+// Since react-router-dom v6 dropped support for using withRouter, had to wrap it manually.
+const WrappedExample = props => {
+  const location = useLocation();
+  return <Example location={location} {...props} />
+};
+
+export default connect(mapStateToProps)(WrappedExample);
